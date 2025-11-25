@@ -1,6 +1,3 @@
-# **README.md (Final Version)**
-
-```markdown
 # 🛒 E-commerce Cart QA Automation Project
 
 A complete **Manual + Automated QA Project** for testing an e-commerce shopping cart.  
