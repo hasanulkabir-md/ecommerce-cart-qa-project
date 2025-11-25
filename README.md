@@ -147,6 +147,14 @@ You can also view the generated HTML version:
 👉 **[Download HTML Report](sandbox:/mnt/data/ui-report.html)**
 
 ---
+## 📸 Screenshots
+
+### Cart Page Under Test
+![Cart Page](assets/screenshots/cart-page.png)
+
+### Test Suite Passing in Terminal
+![Pytest Pass](assets/screenshots/test-pass-terminal.png)
+
 
 ## 🔧 Custom Playwright Fixture
 
