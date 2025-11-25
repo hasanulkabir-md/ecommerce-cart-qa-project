@@ -70,8 +70,7 @@ ecommerce-cart-qa-project/
 
 ### 🟢 All Tests Passing (Terminal Output)
 
-![Pytest Pass](assets/screenshots/test-pass-terminal.png
-
+![Pytest Pass](assets/screenshots/test-pass-terminal.png)
 
 ---
 
