@@ -1,49 +1,40 @@
+# **README.md (Final Version)**
+
+```markdown
 # 🛒 E-commerce Cart QA Automation Project
 
-**Manual Testing • UI Automation (Playwright) • API Testing**
-
-This project demonstrates a complete QA workflow for validating an e-commerce shopping cart system.
-It includes **manual test design**, **UI automation using Playwright**, **API testing**, and **XML reporting**, organized in a clean and scalable structure.
+A complete **Manual + Automated QA Project** for testing an e-commerce shopping cart.  
+Includes **UI Automation (Playwright + Pytest)**, **API testing**, **manual test cases**, and **CI/CD with GitHub Actions**.
 
 ---
 
-## ⭐ Project Overview
+## 🚀 Features
 
-This project focuses on testing the core functionality of an e-commerce cart, using both manual and automated techniques.
+### ✅ UI Automation (Playwright)
+- Login  
+- Add product to cart  
+- Remove product  
+- Checkout flow  
+- Assertions for cart count and page navigation  
 
-Key components include:
+### 🔌 API Testing
+- Simple user-creation API test  
+- Validates status codes & response structure  
 
-* **Manual test cases** (functional, regression, negative)
-* **UI automation with Playwright + Python**
-* **API validation using the Requests library**
-* **JUnit XML test reporting via Pytest**
-* **Custom Playwright fixture** (no dependency on pytest-playwright)
+### 🧪 Manual Testing
+- Includes Excel test case suite:  
+  `manual-tests/test-cases-cart.xlsx`
 
-### Main features tested:
-
-* Adding items to the cart
-* Removing items
-* Checking cart item quantities
-* Validating checkout flow
-* API test for user creation
-
----
-
-## 🧪 Tech Stack
-
-### **Tools & Technologies**
-
-* **Python 3.12**
-* **Playwright** (browser automation)
-* **Pytest** (test framework)
-* **Requests** (API testing)
-* **JUnit-style XML reports**
+### 🔄 Continuous Integration (CI/CD)
+- All tests run automatically in GitHub Actions  
+- Test results uploaded as downloadable artifacts  
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```
+
 ecommerce-cart-qa-project/
 │
 ├── automation/
@@ -54,136 +45,116 @@ ecommerce-cart-qa-project/
 │       ├── test_checkout_flow.py
 │       └── test_remove_item.py
 │
-├── bug-reports/
-│   └── bug-report.xlsx
-│
 ├── manual-tests/
 │   └── test-cases-cart.xlsx
 │
-├── reports/
-│   └── ui-report.xml
+├── assets/
+│   └── screenshots/
+│       ├── cart-page.png
+│       └── test-pass-terminal.png
 │
+├── reports/              ← local reports (ignored by Git)
+├── .github/workflows/
+│   └── ci-tests.yml
 ├── conftest.py
-├── README.md
-└── venv/
+├── requirements.txt
+└── README.md
+
+````
+
+---
+
+## 📸 Screenshots
+
+### 🛍️ Cart Page Under Test
+(Replace the filename once you upload your screenshot)
+
+```markdown
+![Cart Page](assets/screenshots/cart-page.png)
+````
+
+### 🟢 All Tests Passing (Terminal Output)
+
+```markdown
+![Pytest Pass](assets/screenshots/test-pass-terminal.png)
 ```
 
 ---
 
-## 🎯 Test Coverage
+## 🧪 Running Tests Locally
 
-### **UI Test Scenarios**
-
-✔ Successful login
-✔ Add product to cart
-✔ Remove product from cart
-✔ Validate checkout flow
-✔ Verify item count in cart
-
-### **API Test Scenarios**
-
-✔ Create a new user (POST)
-✔ Validate status code
-✔ Validate response body
-
----
-
-## 🖥 Running the Tests
-
-### **1️⃣ Set up virtual environment**
+### 1. Install dependencies
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
----
-
-### **2️⃣ Install dependencies**
-
-```bash
-pip install pytest requests playwright
+pip install -r requirements.txt
 playwright install
 ```
 
----
-
-### **3️⃣ Run full test suite**
+### 2. Run all tests
 
 ```bash
 pytest --junitxml=reports/ui-report.xml
 ```
 
----
+### 3. View report locally
 
-### **4️⃣ Run UI-only tests**
+Open:
 
-```bash
-pytest automation/ui/
+```
+reports/ui-report.xml
 ```
 
+Use any JUnit viewer (or VS Code extension).
+
 ---
 
-### **5️⃣ Run API-only tests**
+## ☁️ Running Tests in GitHub Actions
 
-```bash
-pytest automation/api/
+This project includes a full CI workflow:
+
+```
+.github/workflows/ci-tests.yml
 ```
 
----
+Every push automatically:
 
-# Downloading Test Report
-
-When the CI pipeline finishes running, GitHub Actions automatically uploads the test results as an artifact.
-You can download it by:
-
-Going to the Actions tab
-
-Selecting a workflow run
-
-Scrolling to the Artifacts section
-
-Downloading junit-report
-
----
-## 📸 Screenshots
-
-### Cart Page Under Test
-![Cart Page](assets/screenshots/cart-page.png)
-
-### Test Suite Passing in Terminal
-![Pytest Pass](assets/screenshots/test-pass-terminal.png)
-
-
-## 🔧 Custom Playwright Fixture
-
-This project uses a custom Playwright fixture defined in `conftest.py`:
-
-```python
-@pytest.fixture
-def page():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        yield page
-        browser.close()
-```
-
-This ensures stable browser sessions without requiring external pytest plugins.
+* Installs dependencies
+* Installs Playwright browsers
+* Runs all UI + API tests
+* Uploads the **JUnit Report** as a downloadable artifact
 
 ---
 
-## 🚀 Future Enhancements
+## 📥 How to Download Test Reports (GitHub Actions)
 
-* Implement Page Object Model (POM)
-* Capture screenshots on test failure
-* Integrate Allure or pytest-html for advanced reports
-* Add GitHub Actions CI workflow
-* Add performance/load testing (e.g., with Locust)
+1. Go to your repository on GitHub
+2. Click on the **Actions** tab
+3. Select the latest workflow run
+4. Scroll down to the **Artifacts** section
+5. Click **junit-report** to download `ui-report.xml`
+
+🎉 You now have the test results from the CI pipeline.
 
 ---
 
-## 👤 Author
+## 🎯 Technologies Used
 
-**Md Hasanul Kabir**
-QA Engineer • Automation • Python • Playwright
+* **Python 3.12**
+* **Playwright**
+* **Pytest**
+* **Requests**
+* **GitHub Actions**
+* **Excel (Manual test cases)**
+
+---
+
+## 🏁 Summary
+
+This project demonstrates end-to-end QA capability:
+
+* Manual test case design
+* UI automation
+* API testing
+* CI/CD integration
+* Clean repo structure
+* Professional documentation
