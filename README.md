@@ -132,19 +132,18 @@ pytest automation/api/
 
 ---
 
-## 📄 Test Reporting
+# Downloading Test Report
 
-Pytest generates **JUnit XML reports** at:
+When the CI pipeline finishes running, GitHub Actions automatically uploads the test results as an artifact.
+You can download it by:
 
-```
-reports/ui-report.xml
-```
+Going to the Actions tab
 
-These reports can be used in CI/CD systems such as GitHub Actions, Jenkins, GitLab CI, and Azure DevOps.
+Selecting a workflow run
 
-You can also view the generated HTML version:
+Scrolling to the Artifacts section
 
-👉 **[Download HTML Report](sandbox:/mnt/data/ui-report.html)**
+Downloading junit-report
 
 ---
 ## 📸 Screenshots
