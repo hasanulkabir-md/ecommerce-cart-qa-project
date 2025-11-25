@@ -66,15 +66,12 @@ ecommerce-cart-qa-project/
 ### 🛍️ Cart Page Under Test
 (Replace the filename once you upload your screenshot)
 
-```markdown
 ![Cart Page](assets/screenshots/cart-page.png)
-````
 
 ### 🟢 All Tests Passing (Terminal Output)
 
-```markdown
-![Pytest Pass](assets/screenshots/test-pass-terminal.png)
-```
+![Pytest Pass](assets/screenshots/test-pass-terminal.png
+
 
 ---
 
