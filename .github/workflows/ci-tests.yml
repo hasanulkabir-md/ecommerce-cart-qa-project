@@ -47,7 +47,7 @@ jobs:
         run: |
           ls -al reports
 
-      # 8. Commit and push changes to README.md
+      # 8. Commit and push changes to README.md (if necessary)
       - name: Commit and push changes to README.md
         run: |
           git config --global user.name 'Your Name'
