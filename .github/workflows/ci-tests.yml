@@ -1,3 +1,4 @@
+name: E-commerce Cart API Tests
 on:
   push:
     branches: [ main, master ]
