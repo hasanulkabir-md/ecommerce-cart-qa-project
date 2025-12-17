@@ -1,4 +1,3 @@
-name: CI - E-commerce Cart QA Tests
 on:
   push:
     branches: [ main, master ]
@@ -25,25 +24,42 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      # 4. Install Playwright and its dependencies
+      - name: Install Playwright
+        run: |
           pip install playwright
           playwright install --with-deps
 
-      # 4. Run tests and generate JUnit XML report
+      # 5. Verify Playwright Installation
+      - name: Verify Playwright Installation
+        run: |
+          playwright --version
+
+      # 6. Run tests and generate JUnit XML report
       - name: Run tests
         run: |
           mkdir -p reports
           pytest --junitxml=reports/ui-report.xml
 
-      # 5. Check if JUnit report was created
+      # 7. Check if JUnit report was created
       - name: Check if JUnit report was created
         run: |
           ls -al reports
 
-      # 6. Upload the test report as an artifact
+      # 8. Commit and push changes to README.md
+      - name: Commit and push changes to README.md
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-email@example.com'
+          git add README.md
+          git commit -m "Update README.md"
+          git push origin main
+
+      # 9. Upload the test report as an artifact
       - name: Upload JUnit report
         uses: actions/upload-artifact@v4
         if: always()  # Upload even if tests fail
         with:
           name: junit-report
           path: reports/ui-report.xml
-
