@@ -28,13 +28,23 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps
 
-      # 4. Run pytest and generate JUnit XML report
+      # 4. Verify Playwright installation
+      - name: Verify Playwright Installation
+        run: |
+          playwright --version
+
+      # 5. Run tests and generate JUnit XML report
       - name: Run tests
         run: |
           mkdir -p reports
           pytest --junitxml=reports/ui-report.xml
 
-      # 5. Upload the test report as an artifact
+      # 6. Check if JUnit report was created
+      - name: Check if JUnit report was created
+        run: |
+          ls -al reports
+
+      # 7. Upload the test report as an artifact
       - name: Upload JUnit report
         uses: actions/upload-artifact@v4
         if: always()
