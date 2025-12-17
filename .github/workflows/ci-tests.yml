@@ -21,20 +21,20 @@ jobs:
           python-version: '3.12'
 
       # 3. Install dependencies
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Install Playwright globally
-      - name: Install Playwright
+      # 4. Install pytest explicitly (if not in requirements.txt)
+      - name: Install pytest
         run: |
-          npm install -g playwright
+          pip install pytest
 
-      # 5. Install Playwright browsers
-      - name: Install Playwright Browsers
+      # 5. Verify pytest installation
+      - name: Verify pytest installation
         run: |
-          playwright install --with-deps
+          pytest --version
 
       # 6. Run tests and generate JUnit XML report
       - name: Run tests
@@ -63,4 +63,3 @@ jobs:
         with:
           name: junit-report
           path: reports/ui-report.xml
-
